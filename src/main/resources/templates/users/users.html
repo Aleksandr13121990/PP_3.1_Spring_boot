@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>all users</title>
+</head>
+<body>
+<h3>Table user list</h3>
+<div>
+    <table class="bordered-table">
+        <tr>
+            <th>Name</th>
+            <th>Surname</th>
+            <th>Email</th>
+        </tr>
+        <tr th:each="user : ${users}">
+            <td>
+                <a th:href="@{/user(id=${user.getId()})}" th:text="${user.getName()}">name</a>
+            </td>
+            <td>
+                <a th:href="@{/user(id=${user.getId()})}" th:text="${user.getSurname()}">surname</a>
+            </td>
+            <td>
+                <a th:href="@{/user(id=${user.getId()})}" th:text="${user.getEmail()}">email</a>
+            </td>
+        </tr>
+    </table>
+    <br>
+    <form th:method="GET" th:action="@{/new}">
+        <input type="submit" value="Create new user"/>
+    </form>
+
+    <style>
+        .bordered-table {
+            border-collapse: collapse;
+        }
+
+        .bordered-table th, .bordered-table td {
+            border: 1px solid black;
+            padding: 5px;
+        }
+    </style>
+
+</div>
+</body>
+</html>
